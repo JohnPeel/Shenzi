@@ -1,4 +1,4 @@
 Shenzi
 ======
 
-GUI-less version of Simba, used to testing script compliation for autobuilds.
+GUI-less version of Simba, used for testing script compliation in autobuilds.
