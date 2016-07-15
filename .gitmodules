@@ -1,0 +1,3 @@
+[submodule "autobuild/travis-lazarus"]
+	path = autobuild/travis-lazarus
+	url = https://github.com/nielsAD/travis-lazarus.git
