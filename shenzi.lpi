@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
     <Version Value="9"/>
@@ -12,6 +12,7 @@
       </Flags>
       <SessionStorage Value="InIDEConfig"/>
       <MainUnit Value="0"/>
+      <AutoCreateForms Value="False"/>
       <Title Value="Shenzi"/>
       <UseAppBundle Value="False"/>
       <ResourceType Value="res"/>
@@ -22,8 +23,34 @@
     <VersionInfo>
       <StringTable ProductVersion=""/>
     </VersionInfo>
-    <BuildModes Count="1">
-      <Item1 Name="Default" Default="True"/>
+    <BuildModes Count="2">
+      <Item1 Name="Debug" Default="True"/>
+      <Item2 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="Shenzi.$(TargetCPU)-$(TargetOS)"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="Simba/Projects/Simba;Lape;Simba/Units/MMLAddon/LPInc;Simba/Units/MMLAddon/LPInc/Wrappers;."/>
+            <Libraries Value="Lape/extensions/ffi/bin/$(TargetOS)"/>
+            <OtherUnitFiles Value="Lape;Lape/extensions/ffi;Simba/Units/MMLAddon;Simba/Units/MMLCore;Simba/Units/Misc;Simba/Units/Misc/DCPCrypt;Simba/Units/Misc/DCPCrypt/Ciphers;Simba/Units/Misc/DCPCrypt/Hashes;Simba/Units/Linux;Simba/Units/Synapse;Simba/Projects/Simba;Simba/Units/MMLAddon/LPInc/Classes;Simba/Units/MMLAddon/LPInc/Classes/miniLCL;Simba/Units/MMLAddon/LPInc/Classes/MML"/>
+            <UnitOutputDirectory Value="build/$(BuildMode)/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="2"/>
+            </Optimizations>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+          </Linking>
+        </CompilerOptions>
+      </Item2>
     </BuildModes>
     <PublishOptions>
       <Version Value="2"/>
@@ -56,30 +83,33 @@
   </ProjectOptions>
   <CompilerOptions>
     <Version Value="11"/>
-    <PathDelim Value="\"/>
     <Target>
-      <Filename Value="../../Shenzi"/>
+      <Filename Value="Shenzi.$(TargetCPU)-$(TargetOS)-debug"/>
     </Target>
     <SearchPaths>
-      <IncludeFiles Value="$(ProjPath);..\Simba;$(ProjPath)../../Units/lape;$(ProjPath)../../Units/MMLAddon/PSInc;$(ProjPath)../../Units/MMLAddon/LPInc;$(ProjPath)../../Units/MMLAddon/LPInc/Wrappers;$(ProjOutDir)"/>
-      <Libraries Value="../../Units/lape/extensions/ffi/bin/$(TargetOS)"/>
-      <OtherUnitFiles Value="$(ProjPath);$(ProjPath)../Simba;$(ProjPath)../../Units/MMLCore;$(ProjPath)../../Units/MMLAddon;$(ProjPath)../../Units/PascalScript;$(ProjPath)../../Units/lape;$(ProjPath)../../Units/Misc;$(ProjPath)../../Units/Misc/DCPCrypt;$(ProjPath)../../Units/Misc/DCPCrypt/Hashes;$(ProjPath)../../Units/Misc/DCPCrypt/Ciphers;$(ProjPath)../../Units/MMLAddon/PSInc;$(ProjPath)../../Units/Linux;$(ProjPath)../../Units/Synapse;$(LazarusDir)/components/mouseandkeyinput;../../Units/lape/extensions/ffi;$(ProjPath)../ScriptManager;$(ProjPath)../FormDesigner;../../Units/MMLAddon/LPInc/Classes;../../Units/MMLAddon/LPInc/Classes/MML;$(ProjPath)../../Units/MMLAddon/LPInc/Classes/miniLCL"/>
-      <UnitOutputDirectory Value="$(ProjPath)../../build/$(TargetOS)"/>
+      <IncludeFiles Value="Simba/Projects/Simba;Lape;Simba/Units/MMLAddon/LPInc;Simba/Units/MMLAddon/LPInc/Wrappers;."/>
+      <Libraries Value="Lape/extensions/ffi/bin/$(TargetOS)"/>
+      <OtherUnitFiles Value="Lape;Lape/extensions/ffi;Simba/Units/MMLAddon;Simba/Units/MMLCore;Simba/Units/Misc;Simba/Units/Misc/DCPCrypt;Simba/Units/Misc/DCPCrypt/Ciphers;Simba/Units/Misc/DCPCrypt/Hashes;Simba/Units/Linux;Simba/Units/Synapse;Simba/Projects/Simba;Simba/Units/MMLAddon/LPInc/Classes;Simba/Units/MMLAddon/LPInc/Classes/miniLCL;Simba/Units/MMLAddon/LPInc/Classes/MML"/>
+      <UnitOutputDirectory Value="build/$(BuildMode)/$(TargetCPU)-$(TargetOS)"/>
     </SearchPaths>
     <Parsing>
       <SyntaxOptions>
         <IncludeAssertionCode Value="True"/>
       </SyntaxOptions>
     </Parsing>
-    <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
-      <CustomOptions Value="-dUseCThreads
--dLape_CDECL
--dStaticFFI"/>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
+    <CodeGeneration>
+      <Checks>
+        <IOChecks Value="True"/>
+        <RangeChecks Value="True"/>
+        <OverflowChecks Value="True"/>
+        <StackChecks Value="True"/>
+      </Checks>
+    </CodeGeneration>
+    <Linking>
+      <Debugging>
+        <UseHeaptrc Value="True"/>
+      </Debugging>
+    </Linking>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">
