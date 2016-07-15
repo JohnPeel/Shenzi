@@ -162,6 +162,12 @@ var
 {$ENDIF}
 
 begin
+  {$IFDEF DEBUG}
+  if FileExists('Shenzi.trc') then
+    DeleteFile('Shenzi.trc');
+  SetHeapTraceOutput('Shenzi.trc');
+  {$ENDIF DEBUG}
+
   Application.Initialize;
 
   ExceptProc := @ExitCodeExceptHandler;
@@ -177,7 +183,7 @@ begin
 
   if (not isWritable) and (not isElevated) then
   begin
-    WriteLn('No write access, going to try elevating!');
+    _WriteLn('No write access, going to try elevating!');
 
     FillChar(sei, SizeOf(sei), 0);
     sei.cbSize := SizeOf(sei);
@@ -197,11 +203,11 @@ begin
 
     if (ShellExecuteExA(@sei)) then
     begin
-      WriteLn('Elevated Simba started properly... Halting this one.');
+      _WriteLn('Elevated Simba started properly... Halting this one.');
       Halt;
     end;
 
-    WriteLn('You have no write access to this directory, and elevation failed!');
+    _WriteLn('You have no write access to this directory, and elevation failed!');
   end;
   {$ENDIF}
 
@@ -228,7 +234,7 @@ begin
   if (hasScriptFile in Config) or (hasDefault in Config) then
     Script := LoadFile(ScriptFile)
   else
-    Script := 'program new; {$I SRL-6/srl.simba} begin end;';
+    Script := 'program new; begin WriteLn(''Testing''); end;';
 
   if SimbaSettings.Oops then
     _Writeln('WARNING: No permissions to write to ' + SimbaSettingsFile);
@@ -239,7 +245,7 @@ begin
     on e: Exception do
     begin
       Thread := nil;
-      Halt;
+      Halt(1);
     end;
   end;
 
@@ -287,6 +293,7 @@ begin
     FreeAndNil(PluginsGlob);
   FreeSimbaSettings(False, SimbaSettingsFile);
 
+  Application.Free;
   Halt(ExitCode);
 end.
 
