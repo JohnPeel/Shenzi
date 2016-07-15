@@ -13,7 +13,7 @@ env:
 matrix:
   include:
     - os: linux
-      env: LAZ_VER=1.4.4 LAZ_OPT="--cpu=i386" DEPLOY_FILE="Shenzi.i386-linux-debug" 
+      env: LAZ_VER=1.4.4 LAZ_REL_DEF="i386" LAZ_OPT="--cpu=i386" DEPLOY_FILE="Shenzi.i386-linux-debug"
     - os: linux
       env: LAZ_VER=1.4.4 LAZ_WINE=wine WINEARCH=win32 LAZ_OPT="--os=win32 --cpu=i386" DEPLOY_FILE="Shenzi.i386-win32-debug.exe"
     - os: linux
