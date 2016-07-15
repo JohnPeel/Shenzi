@@ -1,0 +1,55 @@
+# Based on .travis.yml in `travis-lazarus` (https://github.com/nielsAD/travis-lazarus)
+
+sudo: true
+
+os:
+  - linux
+  - osx
+
+env:
+  global:
+    - WINEPREFIX=~/.winelaz
+    - DISPLAY=:99.0
+  matrix:
+    - LAZ_VER=1.4.4
+
+matrix:
+  allow_failures:
+    - os: osx
+  include:
+    - os: linux
+      env: LAZ_VER=1.4.4  LAZ_WINE=wine WINEARCH=win32 LAZ_OPT="--os=win32 --cpu=i386"
+    - os: linux
+      env: LAZ_VER=1.4.4  LAZ_WINE=wine WINEARCH=win64 LAZ_OPT="--os=win64 --cpu=x86_64"
+
+before_install:
+    # Start virtual display server
+  - sh -e /etc/init.d/xvfb start || true
+  - sudo apt-get update && sudo apt-get install libxtst-dev libkeybinder-dev || true
+  - cp Simba.inc ./Simba/Projects/Simba || true
+
+install:
+    # Install prerequisites (wine/fpc/lazarus)
+  - ./autobuild/travis-lazarus/.travis.install.py
+
+script:
+  - $LAZ_WINE lazbuild $LAZ_OPT ./shenzi.lpi
+
+notifications:
+  irc:
+    channels: "irc.rizon.net#simba"
+    template:
+      - "%{repository}#%{build_number} (%{branch} - %{commit} : %{author}): %{message}"
+
+deploy:
+  provider: releases
+  api_key:
+    secure: oNnsz3xT3A7YNUXFuNsdltQwono2Qu2vobH0X+gkdaV0vq6AvPtNgcPC1TXB4NXsS2ky1AfMxxTb7TxDp7a6dDlU2/cey72I+cBwZmJwL1NZcGXZ4GRy3Nz6PuwKnQltNyWwsP6/LwVMZYl4j2InYHTHC7GkJAq6I5pd6GDRb/o=
+  file:
+    - "Shenzi.i386-win32-debug.exe"
+    - "Shenzi.x86_64-win64-debug.exe"
+    - "Shenzi.i386-linux-debug"
+    - "Shenzi.x86_64-linux-debug"
+  skip_cleanup: true
+  on:
+    tags: true
