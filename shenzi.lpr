@@ -160,7 +160,10 @@ var
   I: LongInt;
   sei: TShellExecuteInfoA;
 {$ENDIF}
+
 begin
+  Application.Initialize;
+
   ExceptProc := @ExitCodeExceptHandler;
 
   {$IFDEF WINDOWS}
