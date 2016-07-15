@@ -4,3 +4,6 @@
 [submodule "Simba"]
 	path = Simba
 	url = https://github.com/MerlijnWajer/Simba.git
+[submodule "Lape"]
+	path = Lape
+	url = https://github.com/SRL/Lape.git
