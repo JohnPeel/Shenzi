@@ -8,14 +8,16 @@ env:
     - WINEPREFIX=~/.winelaz
     - DISPLAY=:99.0
   matrix:
-    - LAZ_VER=1.4.4
+    - LAZ_VER=1.4.4 DEPLOY_FILE="Shenzi.x86_64-linux-debug"
 
 matrix:
   include:
     - os: linux
-      env: LAZ_VER=1.4.4 LAZ_WINE=wine WINEARCH=win32 LAZ_OPT="--os=win32 --cpu=i386"
+      env: LAZ_VER=1.4.4 LAZ_OPT="--cpu=i386" DEPLOY_FILE="Shenzi.i386-linux-debug" 
     - os: linux
-      env: LAZ_VER=1.4.4 LAZ_WINE=wine WINEARCH=win64 LAZ_OPT="--os=win64 --cpu=x86_64"
+      env: LAZ_VER=1.4.4 LAZ_WINE=wine WINEARCH=win32 LAZ_OPT="--os=win32 --cpu=i386" DEPLOY_FILE="Shenzi.i386-win32-debug.exe"
+    - os: linux
+      env: LAZ_VER=1.4.4 LAZ_WINE=wine WINEARCH=win64 LAZ_OPT="--os=win64 --cpu=x86_64" DEPLOY_FILE="Shenzi.x86_64-win64-debug.exe"
 
 before_install:
   - sh -e /etc/init.d/xvfb start || true
@@ -38,11 +40,7 @@ deploy:
   provider: releases
   api_key:
     secure: "S4qDiuC/vIRXe3XtRJCczG13GOLep8W7YOS7bUGr5amgNRT4ZYfnPicGwNgTco2v0dGrTq/4H95CYr+YwcdWQFs0iO6hCwvVEhgZ49KfGXxB+fulcUjAEG9xlKLvXf/+65SjV7UgcbizShixmo5KZr1z7Zg4R4jBAvRc4Xjco7k3UhTl/ZRaeDP4s9VNQ+l4XXv2XULHdaNWPQM0s4IvNh4CE070fok5Ve8czQ3e/kNUX2TD6kIgviuBy04VGeU/tgg1/LLmgJYXHODV4aRiBzfUb+2Bgk48RiHdgSuhKUaR0YPl1ASXbPwS88rLBdEqWZYmDZgKiNP9bU1W/tuwkuqyI8p3IQ/MnANxE/hx1Zpz9pu1ptrm/83GotGld/m15gwr5yqNE6PP97KR4OB6lFzZxL3PJ8KBHM2WD2pnliWWsdvV4nLozXcIupVZZbdXmP4XeJQJ96uXG8Auf3b+YYGZC8hOVeQgXQjE8f9JTftgVSk5+Lq8N31jCaNnS3l38h0QBJs9yeUyDgIyN+qcQjUanpWjSCCapAzgcA/4ms0rNW9XW2Uol5P7Hx+VW56LO3CiKJ2gSo4/7fAqNn5TTCDCBkh5Snid9O2dKEu/uGemvBC6Yt8vTj0ESltssyaNspy9WNasna6s+oVxIJaIfmCjjJjR2p2w6HNVsSsTgwI="
-  file:
-    - Shenzi.i386-win32-debug.exe
-    - Shenzi.x86_64-win64-debug.exe
-    - Shenzi.i386-linux-debug
-    - Shenzi.x86_64-linux-debug
+  file: $DEPLOY_FILE
   skip_cleanup: true
   on:
     tags: true
