@@ -44,7 +44,7 @@ notifications:
 deploy:
   provider: releases
   api_key:
-    secure: oNnsz3xT3A7YNUXFuNsdltQwono2Qu2vobH0X+gkdaV0vq6AvPtNgcPC1TXB4NXsS2ky1AfMxxTb7TxDp7a6dDlU2/cey72I+cBwZmJwL1NZcGXZ4GRy3Nz6PuwKnQltNyWwsP6/LwVMZYl4j2InYHTHC7GkJAq6I5pd6GDRb/o=
+    secure: wTcNqPmyjc1YAlR5Uud7WRzOYtgCzG4fWY4/WQeo4GNXy8HhNFGcTSf9hYpsh2nZxbBvOzpncNv+FUSGhJ1fpsON+wyPAtiD6M5xf3WcirPxDmWY2yzhUtoEMY5Ab6KVS8+KSfSwpKBCrRFZXMIUFLORCR9mWjiLSzRF+glTQEN7Mt8WRkkaziPqDgj0qcbNELn2/eB/DeXDk/aP8/dXSvLY4Vzk31GHyUigNmc84kieR1URjwDmomP55TZFyDzQHhEXKBOE/2oviRxcEH8ThNUjich7bD7+VgjbmOQNbqvNy7WK/A8IEIZKTQdaWaDdMYGRPa7/N7EZUW9W8lcAfIJ+OmRrklakMCVZDbEEEyaDrZoCDw62UDIaxiH6aBcGuBapc0mLAv6FIbKFTJpJ7R+8/4krTHyqvzMwvwCzSOV1YFi9FKzMVjCqUnhsfjVDinFWnjq1dxnFkUX3UhtJFNPIO+1QsWk+cQvPPIIpAI/FzkZX+RlqaK3tJdyi1Xe3NRphBC5zv1Kqcz43tgGQdI6Ffiocr8kKm
   file:
     - "Shenzi.i386-win32-debug.exe"
     - "Shenzi.x86_64-win64-debug.exe"
